@@ -46,10 +46,16 @@ describe("Gilded Rose", function() {
     });
 
     it("should increase diminue quality", function() {
-      const gildedRose = new Shop([new Item("item1", 0, 5)]);
-      const items = gildedRose.updateQuality();
+        const gildedRose = new Shop([new Item("item1", 0, 5)]);
+        const items = gildedRose.updateQuality();
 
-      expect(items[0].quality).toEqual(3);
+        expect(items[0].quality).toEqual(3);
+    });
+
+    it("should quality of a product can never be negative", function() {
+        const gildedRose = new Shop([new Item("item1", 0, 1)]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).toEqual(0);
     });
 
 
