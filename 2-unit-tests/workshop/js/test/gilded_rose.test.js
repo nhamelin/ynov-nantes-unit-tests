@@ -31,9 +31,9 @@ describe("Gilded Rose", function() {
     it("should decrease values at the end of the day v1", function() {
         const gildedRose = new Shop([new Item("finito", 3, 8)]);
         const items = gildedRose.updateQuality();
+
         expect(items[0].sellIn).toEqual(2);
         expect(items[0].quality).toEqual(7);
-
     });
 
     it("should decrease values at the end of the day v2", function() {
@@ -46,7 +46,6 @@ describe("Gilded Rose", function() {
         gildedRose.items.forEach(item => {
             expect(item.sellIn).toBe(2);
             expect(item.quality).toBe(2);
-
         });
     });
 
@@ -88,6 +87,42 @@ describe("Gilded Rose", function() {
       const items = gildedRose.updateQuality();
 
       expect(items[0].quality).toEqual(30);
+    });
+
+    // Vérification de Backstage passes
+    it("should decrease quality by 2", function() {
+      const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 10, 30)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(32);
+    });
+
+    it("should decrease quality by 2", function() {
+      const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 8, 30)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(32);
+    });
+
+    it("should decrease quality by 3", function() {
+      const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 5, 30)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(33);
+    });
+
+    it("should decrease quality by 3", function() {
+      const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 4, 30)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(33);
+    });
+
+    it("should return quality 0", function() {
+      const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 0, 30)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(0);
     });
 
 });
