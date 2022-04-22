@@ -52,11 +52,18 @@ describe("Gilded Rose", function() {
         expect(items[0].quality).toEqual(3);
     });
 
-    it("should quality of a product can never be negative", function() {
-        const gildedRose = new Shop([new Item("item1", 0, 1)]);
+    it("should never be negative", function() {
+        const gildedRose = new Shop([new Item("item1", 0, 0)]);
         const items = gildedRose.updateQuality();
+
         expect(items[0].quality).toEqual(0);
     });
 
+    it("should increase quality when Aged Brie", function() {
+      const gildedRose = new Shop([new Item("Aged Brie", 0, 9)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(10);
+  });
 
 });
