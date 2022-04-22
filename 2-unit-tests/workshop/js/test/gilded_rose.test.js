@@ -6,4 +6,12 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
     expect(items[0].name).toBe("fixme");
   });
+
+  it("should return sellIn for each product", function() {
+
+  });
+
+  it("should return quality for each product", function() {
+    
+  });
 });
