@@ -10,14 +10,16 @@ describe("Gilded Rose", function() {
   it("should return sellIn for each product", function() {
     const gildedRose = new Shop([new Item("item1", 1, 1), new Item("item2", 2, 2), new Item("item3", 3, 3)]);
 
-
-
     gildedRose.items.forEach(item => {
       expect(item.sellIn.toBeDefined);
     });
   });
 
   it("should return quality for each product", function() {
-    
+    const gildedRose = new Shop([new Item("item1", 1, 1), new Item("item2", 2, 2), new Item("item3", 3, 3)]);
+
+    gildedRose.items.forEach(item => {
+      expect(item.quality.toBeDefined);
+    });
   });
 });
