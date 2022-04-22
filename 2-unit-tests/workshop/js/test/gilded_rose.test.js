@@ -1,12 +1,15 @@
 const { Shop, Item } = require("../src/gilded_rose");
 
 describe("Gilded Rose", function() {
+
+    // Exemple
     it("should foo", function() {
         const gildedRose = new Shop([new Item("foo", 0, 0)]);
         const items = gildedRose.updateQuality();
         expect(items[0].name).toBe("fixme");
     });
 
+    // Vérification du nombre de jours restants
     it("should return sellIn for each product", function() {
         const gildedRose = new Shop([new Item("item1", 1, 1), new Item("item2", 2, 2), new Item("item3", 3, 3)]);
 
@@ -15,6 +18,7 @@ describe("Gilded Rose", function() {
         });
     });
 
+    // Vérification de la qualité
     it("should return quality for each product", function() {
         const gildedRose = new Shop([new Item("item1", 1, 1), new Item("item2", 2, 2), new Item("item3", 3, 3)]);
 
@@ -23,7 +27,8 @@ describe("Gilded Rose", function() {
         });
     });
 
-    it("should diminue values at the of day", function() {
+    // Vérification de la diminution de la qualité et du nombre de jours restants à la fin de chaque journée
+    it("should decrease values at the end of the day v1", function() {
         const gildedRose = new Shop([new Item("finito", 3, 8)]);
         const items = gildedRose.updateQuality();
         expect(items[0].sellIn).toEqual(2);
@@ -31,7 +36,7 @@ describe("Gilded Rose", function() {
 
     });
 
-    it("should diminue values at the of day", function() {
+    it("should decrease values at the end of the day v2", function() {
         const gildedRose = new Shop([new Item("item1", 3, 3), new Item("item2", 3, 3), new Item("item3", 3, 3)]);
 
         gildedRose.items.forEach(item => {
@@ -45,13 +50,15 @@ describe("Gilded Rose", function() {
         });
     });
 
-    it("should increase diminue quality", function() {
+    // Vérification de la diminution de la qualité quand le nombre de jours restants est à 0
+    it("should increase quality degradation", function() {
         const gildedRose = new Shop([new Item("item1", 0, 5)]);
         const items = gildedRose.updateQuality();
 
         expect(items[0].quality).toEqual(3);
     });
 
+    // Vérification que la qualité n'est pas inférieure à 0
     it("should never be negative", function() {
         const gildedRose = new Shop([new Item("item1", 0, 0)]);
         const items = gildedRose.updateQuality();
@@ -59,6 +66,7 @@ describe("Gilded Rose", function() {
         expect(items[0].quality).toEqual(0);
     });
 
+    // Vérification de Aged Brie
     it("should increase quality when Aged Brie", function() {
       const gildedRose = new Shop([new Item("Aged Brie", 0, 9)]);
       const items = gildedRose.updateQuality();
@@ -66,14 +74,16 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(10);
     });
 
-    it("should never be more than 50", function() {
+    // Vérification que la qualité ne dépasse pas 50
+    it("should never be more than 50 quality", function() {
       const gildedRose = new Shop([new Item("Aged Brie", 0, 50)]);
       const items = gildedRose.updateQuality();
 
       expect(items[0].quality).toEqual(50);
     });
 
-    it("should never decrease quality", function() {
+    // Vérification de la non dégration de la qualitié de Sulfuras
+    it("should never decrease quality of Sulfuras", function() {
       const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 0, 30)]);
       const items = gildedRose.updateQuality();
 
