@@ -1,17 +1,21 @@
 class Minesweeper {
 
-    constructor(m, n) {
-        if (m < 0 || m > 100 || n < 0 || n > 100) {
-            this.m = 0;
-            this.n = 0;
-        } else if (m != null || n != null) {
-            this.m = m;
-            this.n = n;
+    constructor(x, y) {
+        if (x < 0 || y < 0) {
+            this.x = 0;
+            this.y = 0;
+        } else if(m > 100 || n > 100) {
+            this.x = 100;
+            this.y = 100;
+        } else if (x != null || y != null) {
+            this.x = x;
+            this.y = y;
         } else {
-            this.m = 4;
-            this.n = 4;
+            this.x = 4;
+            this.y = 4;
         }
     }
+
 }
 module.exports = {
     Minesweeper
