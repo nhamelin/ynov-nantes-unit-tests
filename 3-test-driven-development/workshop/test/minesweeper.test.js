@@ -10,4 +10,12 @@ describe("Minesweeper", function() {
 
     });
 
+    it("should line and column of square must betwen   (0 < n,m <= 100)", function() {
+        const square = new Square(-2, 102);
+        expect(square.m).toBe(0);
+        expect(square.n).toBe(0);
+
+
+    });
+
 });
