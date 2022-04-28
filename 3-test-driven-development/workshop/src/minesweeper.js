@@ -1,4 +1,4 @@
-class Square {
+class Minesweeper {
 
     constructor(m, n) {
         if (m < 0 || m > 100 || n < 0 || n > 100) {
@@ -14,5 +14,5 @@ class Square {
     }
 }
 module.exports = {
-    Square
+    Minesweeper
 }
