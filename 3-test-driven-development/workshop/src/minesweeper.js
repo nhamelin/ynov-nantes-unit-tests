@@ -7,6 +7,7 @@ class Minesweeper {
             this.x = 0;
             this.y = 0;
         } else if (x > 100 || y > 100) {
+
             this.x = 100;
             this.y = 100;
         } else if (x != null || y != null) {
@@ -53,6 +54,7 @@ class Minesweeper {
 
         return nb;
     }
+
 
 }
 module.exports = {

@@ -1,5 +1,6 @@
 const { Minesweeper } = require("../src/minesweeper");
 
+
 describe("Minesweeper", function() {
     it("should create Minesweeper", function() {
         const board = new Minesweeper(15, 15);
@@ -28,6 +29,7 @@ describe("Minesweeper", function() {
         console.log(nbMines);
 
         expect(nbMines).toBe(3);
+
     });
 
 });
