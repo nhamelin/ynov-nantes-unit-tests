@@ -51,7 +51,7 @@ class Minesweeper {
                 }
             }
         }
-
+        console.log(board);
         return nb;
     }
 
