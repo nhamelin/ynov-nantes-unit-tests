@@ -125,4 +125,14 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(0);
     });
 
+    // Vérification de Conjured 
+    /*
+    it("should decrease quality 2 by 2 if conjured", function() {
+      const gildedRose = new Shop([new Item("itemConjured1", 5, 10)]);
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toEqual(8);
+    });
+    */
+
 });
