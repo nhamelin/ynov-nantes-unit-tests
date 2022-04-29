@@ -4,15 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "all": "node server.js & jest --watchAll --colors --coverage",
+    "test": "jest --watchAll --colors --coverage",
     "start:dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "nodemon": "^1.18.9",
-    "mongoose": "^5.4.1"
+    "mongoose": "^5.4.1",
+    "ejs": "^3.1.2"
   }
 }
