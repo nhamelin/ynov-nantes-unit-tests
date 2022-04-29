@@ -69,7 +69,7 @@ paths:
         type: integer
       responses:
         "200":
-          description: "Todo added successfully"
+          description: "Todo patched"
           schema:
             $ref: "#/definitions/Todo"
         "400":
