@@ -1,4 +1,4 @@
-const CLIENT_URL = 'localhost:5000/';
+const CLIENT_URL = `http://localhost:5000/`;
 
 Feature('ToDo List Client');
 
