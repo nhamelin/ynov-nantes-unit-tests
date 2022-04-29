@@ -1,42 +1,93 @@
----
 swagger: "2.0"
 info:
-  description: "Simple and basic API description. Can't wait the day I will generate\
-    \ automatically the documentation, the server, the client by saying one word"
-  version: "1.0"
-  title: "todo-list"
-  license:
-    name: "MIT"
+  description: "Api todo"
+  version: "1.0.0"
+  title: "Todo"
 host: "localhost:5000"
-basePath: "/v1"
+basePath: "/"
 tags:
 - name: "todo"
-  description: "To do"
+  description: "Swagger todo"
 schemes:
 - "https"
+- "http"
 paths:
   /todo:
     get:
-      tags:
-        - "todo"
-      summary: "Retrieve todo"
+      summary: "Get todo"
       operationId: "getTodo"
-      produces:
-        - "application/json"
-      parameters:
-        - in: path
-          name: todoId
-          required: true
-          type: integer
+      tags:
+      - "todo"
       responses:
         "200":
-          description: To do list
+          description: "Get todo"
           schema:
-            type: object
-            properties: 
-              id: 
-                type: integer
-                example: 4
-              text: 
-                type: string
-                example: to do example
+            type: "array"
+            items:
+              $ref: "#/definitions/Todo"
+        "400":
+          description: "Bad request"
+        "500":
+          description: "Forbidden request"
+    post:
+      tags:
+      - "todo"
+      summary: "Add todo"
+      operationId: "addTodo"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Add todo"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            text:
+              type: "string"
+              description: "content"
+      responses:
+        "200":
+          description: "Todo added"
+          schema:
+            $ref: "#/definitions/Todo"
+        "400":
+          description: "Bad request"
+        "500":
+          description: "Forbidden request"
+  /todo/{id}:
+    patch:
+      tags:
+      - "todo"
+      summary: "Patch todo"
+      description: "Patch todo"
+      operationId: "patchTodo"
+      parameters:
+      - in: "path"
+        name: "id"
+        description: "Id todo to patch"
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: "Todo added successfully"
+          schema:
+            $ref: "#/definitions/Todo"
+        "400":
+          description: "Bad request"
+        "500":
+          description: "Forbidden request"
+
+
+definitions:
+  Todo:
+    type: object
+    properties:
+      id:
+        type: "integer"
+        description: "id todo"
+      text:
+        type: "string"
+        description: "content"
+      done:
+        type: "boolean"
+        description: "true if todo is complete"
