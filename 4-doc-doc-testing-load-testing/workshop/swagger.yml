@@ -1,0 +1,47 @@
+---
+swagger: "2.0"
+info:
+  description: "Simple and basic API description. Can't wait the day I will generate\
+    \ automatically the documentation, the server, the client by saying one word"
+  version: "1.0"
+  title: "todo-list"
+  license:
+    name: "MIT"
+host: "localhost:5000"
+basePath: "/v1"
+tags:
+- name: "todo"
+  description: "To do"
+schemes:
+- "https"
+paths:
+  /todo:
+    get:
+      tags:
+      - "todo"
+      summary: "Retrieve todo"
+      operationId: "getTodo"
+      produces:
+      - "application/json"
+      parameters:
+      - name: todoId
+        in: "query"
+        description: "Text"
+        required: false
+        type: integer
+      responses:
+        "200":
+          description: "To do list"
+          schema:
+            type: object
+            properties: 
+              id:
+                type: integer
+                example: 4
+              text: 
+                type: string
+                example: To do example
+        "404":
+          description: "Error, to do not found"
+        "500":
+          description: "Error server side"
