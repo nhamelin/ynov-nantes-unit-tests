@@ -5,23 +5,25 @@ Feature('ToDo List Client');
 Scenario('Test if I can create a ToDo', ({ I }) => {
     I.amOnPage(CLIENT_URL);
 
-    I.waitForText('Create', 3);
-    I.wait(5);
+    // Test création todo
+    I.fillField('.form-control', 'Test create to do list');
+    I.click('#create-todo');
 
-    // ensure message creation works
-    I.fillField('Test create to do list');
-    I.click('Create');
+    // Test affichage todo
+    I.waitForText('Test create to do list');
+});
 
-    I.wait(5);
+Scenario('Test if I can complete a todo', ({ I }) => {
+    I.amOnPage(CLIENT_URL);
 
-    // ensure we can see the to do
-    I.see('Test create to do list');
+    // Test création todo
+    I.fillField('.form-control', 'Test to do complete');
+    I.click('#create-todo');
 
-    // Done
-    I.click('Done');
+    // Test affichage todo
+    I.waitForText('Test to do complete');
 
-    I.wait(5);
-
-    // ensure we see Completed
-    I.see('Completed');
+    // Test du passage dans "completed" des todo
+    I.click('#todo-body tr:last-child button')
+    I.waitForText('Test to do complete', '#done-body')
 });
