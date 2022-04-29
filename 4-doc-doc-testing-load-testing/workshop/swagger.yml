@@ -18,30 +18,25 @@ paths:
   /todo:
     get:
       tags:
-      - "todo"
+        - "todo"
       summary: "Retrieve todo"
       operationId: "getTodo"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: todoId
-        in: "query"
-        description: "Text"
-        required: false
-        type: integer
+        - in: path
+          name: todoId
+          required: true
+          type: integer
       responses:
         "200":
-          description: "To do list"
+          description: To do list
           schema:
             type: object
             properties: 
-              id:
+              id: 
                 type: integer
                 example: 4
               text: 
                 type: string
-                example: To do example
-        "404":
-          description: "Error, to do not found"
-        "500":
-          description: "Error server side"
+                example: to do example
